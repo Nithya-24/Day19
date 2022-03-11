@@ -23,6 +23,11 @@ public class UserRegistration {
 	System.out.println ("Please enter Email:");
 	String email=sc.next();
 	isValidEmail(email);
+	
+	System.out.println ("Please enter Phone Number (xxx-xxx-xxxx):");
+	String phnNo=sc.next();
+	isValidPhoneNo(phnNo);
+	
 	sc.close();
 	}
 	
@@ -84,4 +89,26 @@ public class UserRegistration {
 	         }
 	        
 	    }
+	 
+	 public static boolean isValidPhoneNo(CharSequence phnNo)
+	    {
+	  
+	        /**
+	         *  Regex to check valid Phone Number.
+	        **/
+		    String regex =  "\\+[0-9]*\\d+\\d{10}";
+	        Pattern pattern = Pattern.compile(regex);
+	        Matcher matcher = pattern.matcher(phnNo);
+	        
+	     	        
+	        if(matcher.find()) {
+	            System.out.println("Phone Number is valid");
+	         } else {
+	            System.out.println("Phone Number is not valid");
+	         }
+	        return matcher.find();
+	        
+	    }
+	 
+	 
 }
