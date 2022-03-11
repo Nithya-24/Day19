@@ -15,22 +15,26 @@ public class UserRegistration {
 	System.out.println ("Please enter First name:");
 	String fName=sc.nextLine();
 	isValidFirstName(fName);
+	
+	System.out.println ("Please enter Last name:");
+	String lName=sc.next();
+	isValidLastName(lName);
+	
+	
 	sc.close();
-	//System.out.println ("Please enter Last name:");
-//	String lName=sc.next();
-
 	}
 	
 	 public static void isValidFirstName(String fName)
 	    {
 	  
-	        // Regex to check valid Firstname.
+	        /**
+	         *  Regex to check valid Firstname.
+	         **/
 	        String regex = "^[A-Z][a-z]{2,}";
 	        Pattern pattern = Pattern.compile(regex);
 	        Matcher matcher = pattern.matcher(fName);
 	        
-	        
-	        
+	        	        
 	        if(matcher.find()) {
 	            System.out.println("FirstName is valid");
 	         } else {
@@ -38,4 +42,26 @@ public class UserRegistration {
 	         }
 	        
 	    }
-}
+	 
+	 public static void isValidLastName(String lName)
+	    {
+	  
+	        /**
+	         *  Regex to check valid Lastname.
+	        **/
+	        String regex = "^[A-Z][a-z]{2,}";
+	        Pattern pattern = Pattern.compile(regex);
+	        Matcher matcher = pattern.matcher(lName);
+	        
+	     
+	        
+	        if(matcher.find()) {
+	            System.out.println("Lastname is valid");
+	         } else {
+	            System.out.println("Lastname is not valid");
+	         }
+	        
+	    }
+	 
+	
+	    }
