@@ -20,7 +20,9 @@ public class UserRegistration {
 	String lName=sc.next();
 	isValidLastName(lName);
 	
-	
+	System.out.println ("Please enter Email:");
+	String email=sc.next();
+	isValidEmail(email);
 	sc.close();
 	}
 	
@@ -63,5 +65,23 @@ public class UserRegistration {
 	        
 	    }
 	 
-	
+	 public static void isValidEmail(String email)
+	    {
+	  
+	        /**
+	         *  Regex to check valid email.
+	        **/
+	        String regex = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
+	        Pattern pattern = Pattern.compile(regex);
+	        Matcher matcher = pattern.matcher(email);
+	        
+	     
+	        
+	        if(matcher.find()) {
+	            System.out.println("email is valid");
+	         } else {
+	            System.out.println("email is not valid");
+	         }
+	        
 	    }
+}
