@@ -2,6 +2,7 @@ package userRegistration;
 
 
 import java.util.Scanner;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,22 +13,26 @@ public class UserRegistration {
 	public static void main(String[] args) {
 	// Registered User
 	Scanner sc=new Scanner(System.in);
-	System.out.println ("Please enter First name:");
-	String fName=sc.nextLine();
-	isValidFirstName(fName);
+//	System.out.println ("Please enter First name:");
+//	String fName=sc.nextLine();
+//	isValidFirstName(fName);
+//	
+//	System.out.println ("Please enter Last name:");
+//	String lName=sc.next();
+//	isValidLastName(lName);
+//	
+//	System.out.println ("Please enter Email:");
+//	String email=sc.next();
+//	isValidEmail(email);
 	
-	System.out.println ("Please enter Last name:");
-	String lName=sc.next();
-	isValidLastName(lName);
-	
-	System.out.println ("Please enter Email:");
-	String email=sc.next();
-	isValidEmail(email);
-	
-	System.out.println ("Please enter Phone Number (xxx-xxx-xxxx):");
-	String phnNo=sc.next();
-	isValidPhoneNo(phnNo);
-	
+//	System.out.println ("Please enter Phone Number:");
+//  String phnNo=sc.next();
+//	isValidPhoneNo(phnNo);
+
+	System.out.println ("Please enter Password:");
+	String passWord=sc.next();
+	isValidPassword(passWord);
+
 	sc.close();
 	}
 	
@@ -90,25 +95,42 @@ public class UserRegistration {
 	        
 	    }
 	 
-	 public static boolean isValidPhoneNo(CharSequence phnNo)
+	 public static void isValidPhoneNo(CharSequence phnNo)
+    {
+  
+        /**
+         *  Regex to check valid Phone Number.
+        **/
+	    String regex =  "^(?:(?:\\+|0{0,2})[0-9](\\s*[\\ -]\\s*)?|[0]?)?[6-9]\\d{9}|(\\d[ -]?){10}\\d$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(phnNo);
+        
+     	        
+        if(matcher.find()) {
+            System.out.println("Phone Number is valid");
+         } else {
+            System.out.println("Phone Number is not valid");
+         }
+        
+    }
+	 
+	 public static void isValidPassword(String passWord)
 	    {
 	  
 	        /**
 	         *  Regex to check valid Phone Number.
 	        **/
-		    String regex =  "\\+[0-9]*\\d+\\d{10}";
+		    String regex =  "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$";
 	        Pattern pattern = Pattern.compile(regex);
-	        Matcher matcher = pattern.matcher(phnNo);
+	        Matcher matcher = pattern.matcher(passWord);
 	        
 	     	        
 	        if(matcher.find()) {
-	            System.out.println("Phone Number is valid");
+	            System.out.println("Password is valid");
 	         } else {
-	            System.out.println("Phone Number is not valid");
+	            System.out.println("Password is not valid");
 	         }
-	        return matcher.find();
 	        
 	    }
-	 
 	 
 }
